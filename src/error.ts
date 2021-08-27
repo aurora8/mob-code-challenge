@@ -1,4 +1,6 @@
 class ApiError extends Error {
-    message: string
-
+    constructor() {
+        super();
+        this.message = '';
+    }
 }
