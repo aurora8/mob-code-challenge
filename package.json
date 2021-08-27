@@ -1,0 +1,9 @@
+{
+  "name": "mob-code-challenge",
+  "version": "1.0.0",
+  "description": "Mobiquity coding challenge",
+  "main": "main.js",
+  "repository": "https://github.com/aurora8/mob-code-challenge",
+  "author": "Ali M. Joudeh <alialjoudeh@gmail.com>",
+  "license": "MIT"
+}
