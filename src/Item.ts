@@ -13,6 +13,7 @@
  * (validation, serialization .. etc)
  */
 export class Item {
+
     public weight: number;
     public price: number;
     public index: number;
@@ -67,7 +68,9 @@ export class Bag extends UseCase {
      * @returns {number} used bag capacity
      */
     public get usedCapacity (): number {
-        return this.items.map(i => i.weight).reduce((a,c) => a + c);
+        let sum = 0;
+        this.items.forEach(i => sum += i.weight);
+        return sum;
     }
 
     /**
