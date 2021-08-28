@@ -1,3 +1,5 @@
+import { ApiError } from "./error";
+
 /**
  * @class
  * a class representation of a Use Case Item encapsulating
@@ -14,15 +16,34 @@
  */
 export class Item {
 
-    public weight: number;
-    public price: number;
-    public index: number;
+    private _weight: number;
+    private _price: number;
+    private _index: number;
 
     constructor(i: number, w: number, p: number) {
-        this.index = i;
-        this.weight = w;
-        this.price = p;
+        this._index = i;
+        this._weight = w;
+        this._price = p;
     }
+
+    public get price(): number {
+        return this._price;
+    }
+    
+    public get weight() : number {
+        return this._weight;
+    }
+
+    public set price(v : number) {
+        if (v < 0 || v > 100) throw new ApiError('Invalid price input');
+        this._price = v;
+    }
+    
+    public set weight(v : number) {
+        if (v < 0 || v > 100) throw new ApiError('Invalid price input');
+        this._weight = v;
+    }
+    
 }
 
 /**

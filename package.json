@@ -8,6 +8,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf ./build && tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "start:dev": "ts-node src/packer.ts",
     "start:prod": "npm run build && node dist/packer.js"
   },
