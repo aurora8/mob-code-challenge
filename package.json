@@ -10,6 +10,7 @@
     "build": "rimraf ./build && tsc",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:cov": "jest --coverage=true --coverageProvider=v8",
     "start:dev": "ts-node src/packer.ts",
     "start:prod": "npm run build && node dist/packer.js"
   },

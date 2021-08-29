@@ -16,14 +16,18 @@ import { ApiError } from "./error";
  */
 export class Item {
 
-    private _weight: number;
-    private _price: number;
-    private _index: number;
+    private _weight: number = 0;
+    private _price: number = 0;
+    private _index: number = 0;
 
     constructor(i: number, w: number, p: number) {
-        this._index = i;
-        this._weight = w;
-        this._price = p;
+        this.index = i;
+        this.weight = w;
+        this.price = p;
+    }
+
+    public get ratio(): number {
+        return this._price / this._weight;
     }
 
     public get price(): number {
@@ -43,10 +47,18 @@ export class Item {
         if (v < 0 || v > 100) throw new ApiError('Invalid price input');
         this._weight = v;
     }
-    
+
+    public get index() : number {
+        return this._index;
+    }
+
+    public set index(v : number) {
+        this._index = v;
+    }
 }
 
 /**
+ * @class
  * another abstraction that represents a Use Case as
  * per the use case input specification
  * 
@@ -56,12 +68,21 @@ export class Item {
  * to encapsulate input data, provide validation .. etc
  */
 export class UseCase {
-    public maxWeight: number;
+    public _maxWeight: number;
     public items: Array<Item> = [];
 
     constructor(max_weight: number, items?: Array<Item>) {
-        this.maxWeight = max_weight;
+        this._maxWeight = max_weight;
         if (items) this.items = items;
+    }
+    
+    public get maxWeight() : number {
+        return this._maxWeight;
+    }
+
+    public set maxWeight(v : number) {
+        if (v <= 0 || v > 100) throw new ApiError('Invalid weight capacity');
+        this._maxWeight = v;
     }
 }
 
