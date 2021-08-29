@@ -20,6 +20,15 @@ export class Item {
     private _price: number = 0;
     private _index: number = 0;
 
+    /**
+     * constructor
+     * 
+     * uses class setters to apply validation
+     * 
+     * @param i {number} the item index
+     * @param w {number} the item weight
+     * @param p {number} the item price
+     */
     constructor(i: number, w: number, p: number) {
         this.index = i;
         this.weight = w;
@@ -71,6 +80,12 @@ export class UseCase {
     public _maxWeight: number;
     public items: Array<Item> = [];
 
+    /**
+     * constructor
+     * 
+     * @param max_weight {number} the max weight capacity of the knapsack
+     * @param items {Item[]} array of items in the knapsack
+     */
     constructor(max_weight: number, items?: Array<Item>) {
         this._maxWeight = max_weight;
         if (items) this.items = items;
@@ -95,10 +110,16 @@ export class UseCase {
  * a Bag is capable of computing the used items weights 
  * and available remaining weight capacity
  * 
- * used by the algorithm
+ * used by the algorithm to validation checks
  */
 export class Bag extends UseCase {
 
+    /**
+     * constructor
+     * 
+     * @param max_weight {number} the max weight capacity
+     * @param items {Item[]} array of items in the bag
+     */
     constructor(max_weight: number, items?: Array<Item>) {
         super(max_weight, items);
     }

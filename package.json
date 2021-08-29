@@ -11,8 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage=true --coverageProvider=v8",
-    "start:dev": "ts-node src/packer.ts",
-    "start:prod": "npm run build && node dist/packer.js"
+    "docs": "typedoc --out docs"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
@@ -21,6 +20,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
+    "typedoc": "^0.21.8",
     "typescript": "^4.4.2"
   },
   "dependencies": {}
