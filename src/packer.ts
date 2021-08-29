@@ -121,11 +121,11 @@ export class Packer {
      * relies on sorted elements by ratio in desc order
      * 
      * in this case, the sort comparison uses
-     * RATIO R = A.PRICE / A.WEIGHT + (A.PRICE - B.PRICE)
-     * taking account of the price difference in the sort stage
+     * RATIO R = (B.PRICE / B.WEIGHT) - (A.PRICE / A.WEIGHT) + (B.PRICE - A.PRICE)
+     * taking account of the price difference <delta> in the sort stage
      * 
      * once the item are sorted, the idea is to start picking largest ratios 
-     * one by one until the bag is filled ignoring invalid items
+     * from index = 0 to array.length one by one until the bag is filled ignoring invalid items
      * 
      * the alternate conventional approaches employ dynamic programming with complex data
      * structures like hash tables and sets which is more costly in terms of space complexity
@@ -133,22 +133,23 @@ export class Packer {
      * require huge space complexity, so instead of focusing on finding
      * the max price/value in an iteration, then scanning the items in another, the items are 
      * sorted since we are interested in Items not max value attainable, complexity for those 
-     * other approaches could jump to 2^3 or (2^n + 2^n), also weights are fractional which 
-     * renders these methods unsuitable
+     * other approaches could jump to O(3^n) or O(4^n) besides space complexity, 
+     * also weights are fractional which renders these methods unsuitable
      * 
      * TIME AND SPACE COMPLEXITY
      * =========================
      * the v8 runtime performs an in place Insertion Sort with the built in Array.sort
-     * which O(log n) in the worst case, and O(n) space complexity, 
+     * which is O(log n) in the worst case, and O(n) space complexity, the sort is performed
+     * in place
+     * 
      * looking at the V8 source code implementation of the Array.sort method, 
-     * a check is however made to choose the sort algorithm at runtime, if the target 
-     * array is less than 10 elements, an Insertion Sort is selected and Quick Sort
-     * is selected for longer arrays
+     * the runtime performs an efficient Merge Sort with logarithmic complexity
+     * 
+     * https://github.com/v8/v8/blob/master/src/builtins/typed-array-sort.tq
      * 
      * ALGORITHM         SPACE COMPLEXITY   TIME COMPLEXITY
      * ----------------------------------------------------
-     * Quick Sort        O(n log(n))        O(Log(n))
-     * Insertion Sort    O(n^2)             O(1)
+     * Merge Sort        O(n log(n))        O(n log(n))
      * 
      * 1. the algorithm first sorts out the items from highest to lowest ratio
      * 2. next we iterate over the items from highest to lowest ratio and begin 
