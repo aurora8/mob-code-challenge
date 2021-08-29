@@ -70,12 +70,12 @@ export class Packer {
      * @static
      * @function
      * a convenience parser that parses contents from an input file with 
-     * the provided input specifications from the resources folder in the format
+     * the provided input specifications in the format
      * max weigh capacity : (index,wight,price)
      * where each line represents an input tuple/item
      * 
      * the parser will attempt to parse incoming payloads by collecting relevant
-     * data into separete arrays
+     * data into an array
      * 
      * @param {string} content the file contents to parse
      * @returns {Array<Item>} an array of parsed Item objects
