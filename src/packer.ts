@@ -138,9 +138,6 @@ export class Packer {
      * 
      * TIME AND SPACE COMPLEXITY
      * =========================
-     * the v8 runtime performs an in place Insertion Sort with the built in Array.sort
-     * which is O(log n) in the worst case, and O(n) space complexity, the sort is performed
-     * in place
      * 
      * looking at the V8 source code implementation of the Array.sort method, 
      * the runtime performs an efficient Merge Sort with logarithmic complexity
