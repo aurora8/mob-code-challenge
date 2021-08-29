@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["src/packer.ts"],
+    "entryPoints": ["src/packer.ts", "src/Item.ts"],
     "out": "docs",
     "exclude": "**/*+(tests|test|.test).ts"
   }
