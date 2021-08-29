@@ -27,7 +27,7 @@ in the `Packer.pack` method
 
 detailed documentation in the docs directory (HTML tsdocs)
 
-<img src="https://user-images.githubusercontent.com/44065296/131244298-f6a25429-45be-464f-aa9d-283570f5a19b.png" height="280" align="left">
+<img src="https://user-images.githubusercontent.com/44065296/131244298-f6a25429-45be-464f-aa9d-283570f5a19b.png" height="340" align="left">
 
 <p style="clear: left"></p>
 <br/>
