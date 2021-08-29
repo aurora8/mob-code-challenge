@@ -9,9 +9,12 @@ for the challenge of the 0-1 knapsack problem with fractional weights
 
 detailed docs in the docs directory
 
-<img src="https://user-images.githubusercontent.com/44065296/131244298-f6a25429-45be-464f-aa9d-283570f5a19b.png" height="300">
+<img src="https://user-images.githubusercontent.com/44065296/131244298-f6a25429-45be-464f-aa9d-283570f5a19b.png" height="280" align="left">
+
+<p style="clear: left"></p>
 
 ## Quick Notes
+
 1. all dependencies are dev dependencies
 2. **jest** is used for Testing (config in jest.config.json)
 3. **typedoc** is used for documentation (config in typedoc.json)
