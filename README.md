@@ -1,6 +1,8 @@
 # Mobiquity Code Challenge
 
-<img src="https://user-images.githubusercontent.com/44065296/131244036-a3a7467a-c501-491e-be75-f1ce0abc3103.png" height="180">
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/44065296/131244036-a3a7467a-c501-491e-be75-f1ce0abc3103.png" height="180">
+</p>
 
 this is a library Nodejs project based on the skeleton provided
 for the challenge of the 0-1 knapsack problem with fractional weights
