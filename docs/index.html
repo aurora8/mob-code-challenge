@@ -65,19 +65,36 @@
 					<img src="https://user-images.githubusercontent.com/44065296/131244036-a3a7467a-c501-491e-be75-f1ce0abc3103.png" height="180">
 				</p>
 				<p>this is a library Nodejs project based on the skeleton provided
-				for the challenge of the 0-1 knapsack problem with fractional weights</p>
-				<p>detailed docs in the docs directory</p>
+					for the challenge of the <strong>0-1 knapsack problem</strong> with fractional weights,
+				heavily employed OOP design for most of the implementation code (as per task requirements), making the solution more readable and extensible, most of the provided functions are static since there is no need for any global or package level variables and asynchronous so they can be used async in consumer client code, there is no need to over engineer! the design is simple lib use case, yet provides extensibility, maintainability, readability and re-use</p>
+				<p>to solve all use cases from an input file the</p>
+				<pre><code><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Packer</span><span style="color: #000000">.</span><span style="color: #795E26">pack</span><span style="color: #000000">(</span><span style="color: #001080">filPath</span><span style="color: #000000">: </span><span style="color: #001080">string</span><span style="color: #000000">): </span><span style="color: #267F99">Promise</span><span style="color: #000000">&lt;</span><span style="color: #001080">string</span><span style="color: #000000">&gt;</span>
+</code></pre>
+				<p>the returned promise resolves to solution output </p>
+				<p>to run all Tests from the provided input/ouput files</p>
+				<pre><code><span style="color: #001080">yarn</span><span style="color: #000000"> </span><span style="color: #001080">test</span>
+</code></pre>
+				<p>the solution solves the problem in 3 main stages fully encapsulated
+				in the <code>Packer.pack</code> method</p>
+				<ol>
+					<li>read input file scanning entrie file contents async</li>
+					<li>parse input from the file into <code>UseCase</code> collection</li>
+					<li>greedy algorithm solver solves all use cases</li>
+				</ol>
+				<p>detailed documentation in the docs directory (HTML tsdocs)</p>
 				<img src="https://user-images.githubusercontent.com/44065296/131244298-f6a25429-45be-464f-aa9d-283570f5a19b.png" height="280" align="left">
 				<p style="clear: left"></p>
+				<br/>
 				<a href="#quick-notes" id="quick-notes" style="color: inherit; text-decoration: none;">
 					<h2>Quick Notes</h2>
 				</a>
-				<ol>
+				<ul>
 					<li>all dependencies are dev dependencies</li>
 					<li><strong>jest</strong> is used for Testing (config in jest.config.json)</li>
 					<li><strong>typedoc</strong> is used for documentation (config in typedoc.json)</li>
 					<li><strong>ts-node</strong> for execution/compilation which compiles to es6 in prod mode builds</li>
-				</ol>
+					<li>async/await syntax fully implemented in typescript</li>
+				</ul>
 				<a href="#project-structure" id="project-structure" style="color: inherit; text-decoration: none;">
 					<h2>Project Structure</h2>
 				</a>

@@ -5,20 +5,40 @@
 </p>
 
 this is a library Nodejs project based on the skeleton provided
-for the challenge of the 0-1 knapsack problem with fractional weights
+for the challenge of the **0-1 knapsack problem** with fractional weights,
+heavily employed OOP design for most of the implementation code (as per task requirements), making the solution more readable and extensible, most of the provided functions are static since there is no need for any global or package level variables and asynchronous so they can be used async in consumer client code, there is no need to over engineer! the design is simple lib use case, yet provides extensibility, maintainability, readability and re-use
 
-detailed docs in the docs directory
+to solve all use cases from an input file the
+```
+await Packer.pack(filPath: string): Promise<string>
+``` 
+the returned promise resolves to solution output 
+
+to run all Tests from the provided input/ouput files
+```
+yarn test
+```
+
+the solution solves the problem in 3 main stages fully encapsulated
+in the `Packer.pack` method
+1. read input file scanning entrie file contents async
+2. parse input from the file into `UseCase` collection
+3. greedy algorithm solver solves all use cases
+
+detailed documentation in the docs directory (HTML tsdocs)
 
 <img src="https://user-images.githubusercontent.com/44065296/131244298-f6a25429-45be-464f-aa9d-283570f5a19b.png" height="280" align="left">
 
 <p style="clear: left"></p>
+<br/>
 
 ## Quick Notes
 
-1. all dependencies are dev dependencies
-2. **jest** is used for Testing (config in jest.config.json)
-3. **typedoc** is used for documentation (config in typedoc.json)
-4. **ts-node** for execution/compilation which compiles to es6 in prod mode builds
+- all dependencies are dev dependencies
+- **jest** is used for Testing (config in jest.config.json)
+- **typedoc** is used for documentation (config in typedoc.json)
+- **ts-node** for execution/compilation which compiles to es6 in prod mode builds
+- async/await syntax fully implemented in typescript
 
 ## Project Structure
 
