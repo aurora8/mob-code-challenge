@@ -25,7 +25,8 @@ in the `Packer.pack` method
 2. parse input from the file into `UseCase` collection
 3. greedy algorithm solver solves all use cases
 
-detailed documentation in the docs directory (HTML tsdocs)
+more detailed documentation in the docs directory (HTML tsdocs) includes
+algorithmic analysis and explanations of problem/solution
 
 <img src="https://user-images.githubusercontent.com/44065296/131244298-f6a25429-45be-464f-aa9d-283570f5a19b.png" width="100%">
 
