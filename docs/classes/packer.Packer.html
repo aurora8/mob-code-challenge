@@ -127,7 +127,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aurora8/mob-code-challenge/blob/6384761/src/packer.ts#L20">packer.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/aurora8/mob-code-challenge/blob/f27704b/src/packer.ts#L20">packer.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -164,7 +164,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aurora8/mob-code-challenge/blob/6384761/src/packer.ts#L83">packer.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/aurora8/mob-code-challenge/blob/f27704b/src/packer.ts#L83">packer.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -207,7 +207,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aurora8/mob-code-challenge/blob/6384761/src/packer.ts#L57">packer.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/aurora8/mob-code-challenge/blob/f27704b/src/packer.ts#L57">packer.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -253,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aurora8/mob-code-challenge/blob/6384761/src/packer.ts#L159">packer.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/aurora8/mob-code-challenge/blob/f27704b/src/packer.ts#L183">packer.ts:183</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -270,9 +270,28 @@
 											also accounting for the price difference (prioritizing higher prices),
 											then picking items one at a time until the bag is full
 										relies on sorted elements by ratio in desc order</p>
-										<p>in this case, the sort comparison uses
-											RATIO R = (B.PRICE / B.WEIGHT) - (A.PRICE / A.WEIGHT) + (B.PRICE - A.PRICE)
+										<p>Ratio of an Item Ri = (p price/w weight)
+										Ratio = 1 when price and weight are equal</p>
+										<p>in this case, the sort comparison uses</p>
+										<p>RATIO R = (B.PRICE / B.WEIGHT) - (A.PRICE / A.WEIGHT) + (B.PRICE - A.PRICE)
 										taking account of the price difference <delta> in the sort stage</p>
+										<p>RATIO delta + PRICE delta</p>
+										<p>When the prices are equal, price is cancelled out (zero) and so items with lower
+											weight will take order priority since higher Ratios = lower weights, this covers
+										the favour lower weights for equal prices</p>
+										<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+											<h2>EXAMPLE</h2>
+										</a>
+										<p>10 : (1,5.38,€100) (2,7.22,€3) (3,2,€76) (4,3.61,€48)</p>
+										<p>final sort
+											┌─────────┬─────────┬────────┬────────┬───────┐
+											│ (index) │ _weight │ _price │ _index │ ratio │
+											├─────────┼─────────┼────────┼────────┼───────┤
+											│    0    │  5.38   │  100   │   1    │ 18.58 │
+											│    1    │    2    │   76   │   3    │ 38    │
+											│    2    │  3.61   │   48   │   4    │ 13.29 │
+											│    3    │  7.22   │   3    │   2    │ 0.415 │
+										└─────────┴─────────┴────────┴────────┴───────┘</p>
 										<p>once the item are sorted, the idea is to start picking largest ratios
 										from index = 0 to array.length one by one until the bag is filled ignoring invalid items</p>
 										<p>the alternate conventional approaches employ dynamic programming with complex data
