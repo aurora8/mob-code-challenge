@@ -25,6 +25,18 @@ in the `Packer.pack` method
 2. parse input from the file into `UseCase` collection
 3. greedy algorithm solver solves all use cases
 
+## Problem Statement Summary
+
+- this is an optimization problem
+- weights are fractional/prices are not
+- the goal is item indicies with max value (not max sum of item values)!
+- items with equal prices should favor lower weights (optimization)
+
+the algorithm is a greedy approach achieved by sorting items by highest price/weight ratio while also accounting for the price difference (prioritizing higher prices), then picking items one at a time until the bag is full ...
+
+## Algorithm Complexity
+Time and space Complexity is **O(n log(n))**
+
 more detailed documentation in the docs directory (HTML tsdocs) includes
 algorithmic analysis and explanations of problem/solution
 
