@@ -120,9 +120,33 @@ export class Packer {
      * then picking items one at a time until the bag is full
      * relies on sorted elements by ratio in desc order
      * 
+     * Ratio of an Item Ri = (p price/w weight)
+     * Ratio = 1 when price and weight are equal
+     * 
      * in this case, the sort comparison uses
+     * 
      * RATIO R = (B.PRICE / B.WEIGHT) - (A.PRICE / A.WEIGHT) + (B.PRICE - A.PRICE)
      * taking account of the price difference <delta> in the sort stage
+     * 
+     * RATIO delta + PRICE delta
+     * 
+     * When the prices are equal, price is cancelled out (zero) and so items with lower
+     * weight will take order priority since higher Ratios = lower weights, this covers
+     * the favour lower weights for equal prices
+     * 
+     * EXAMPLE
+     * -------
+     * 10 : (1,5.38,€100) (2,7.22,€3) (3,2,€76) (4,3.61,€48)
+     * 
+     * final sort
+     * ┌─────────┬─────────┬────────┬────────┬───────┐
+     * │ (index) │ _weight │ _price │ _index │ ratio │
+     * ├─────────┼─────────┼────────┼────────┼───────┤
+     * │    0    │  5.38   │  100   │   1    │ 18.58 │
+     * │    1    │    2    │   76   │   3    │ 38    │
+     * │    2    │  3.61   │   48   │   4    │ 13.29 │
+     * │    3    │  7.22   │   3    │   2    │ 0.415 │
+     * └─────────┴─────────┴────────┴────────┴───────┘
      * 
      * once the item are sorted, the idea is to start picking largest ratios 
      * from index = 0 to array.length one by one until the bag is filled ignoring invalid items

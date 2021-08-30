@@ -13,6 +13,10 @@ import { ApiError } from "./error";
  * service tiers were they can be employed as a DTO (Data Transfer Object)
  * for instance in order to cleanly accept network payloads 
  * (validation, serialization .. etc)
+ * 
+ * Assumptions
+ * 1. weight cannot be zero
+ * 2. price can be zero (no value)
  */
 export class Item {
 
@@ -53,7 +57,7 @@ export class Item {
     }
     
     public set weight(v : number) {
-        if (v < 0 || v > 100) throw new ApiError('Invalid price input');
+        if (v <= 0 || v > 100) throw new ApiError('Invalid price input');
         this._weight = v;
     }
 
