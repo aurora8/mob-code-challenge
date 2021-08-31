@@ -79,9 +79,24 @@
 				<ol>
 					<li>read input file scanning entrie file contents async</li>
 					<li>parse input from the file into <code>UseCase</code> collection</li>
-					<li>greedy algorithm solver solves all use cases</li>
+					<li>divide and conquer algorithm solver solves all use cases</li>
 				</ol>
-				<p>detailed documentation in the docs directory (HTML tsdocs)</p>
+				<a href="#problem-statement-summary" id="problem-statement-summary" style="color: inherit; text-decoration: none;">
+					<h2>Problem Statement Summary</h2>
+				</a>
+				<ul>
+					<li>this is an optimization problem</li>
+					<li>weights are fractional/prices are not</li>
+					<li>the goal is item indicies with max value (not max sum of item values)!</li>
+					<li>items with equal prices should favor lower weights (optimization)</li>
+				</ul>
+				<p>the algorithm is a divide and conquer approach achieved by sorting items by highest price/weight ratio while also accounting for the price difference (prioritizing higher prices), then picking items one at a time until the bag is full ...</p>
+				<a href="#algorithm-complexity" id="algorithm-complexity" style="color: inherit; text-decoration: none;">
+					<h2>Algorithm Complexity</h2>
+				</a>
+				<p>Time and space Complexity is <strong>O(n log(n))</strong></p>
+				<p>more detailed documentation in the docs directory (HTML tsdocs) includes
+				algorithmic analysis and explanations of problem/solution</p>
 				<img src="https://user-images.githubusercontent.com/44065296/131244298-f6a25429-45be-464f-aa9d-283570f5a19b.png" width="100%">
 				<a href="#quick-notes" id="quick-notes" style="color: inherit; text-decoration: none;">
 					<h2>Quick Notes</h2>

@@ -6,7 +6,7 @@ import { Bag, Item, UseCase } from './Item';
 export class Packer {
 
     /**
-     * performs a knapsack solution using a greedy algorithm from an input file
+     * performs a knapsack solution using a divide and conquer algorithm from an input file
      * with multiple use cases per line
      * 
      * the method first reads the incoming input file, parses the contens into a 
