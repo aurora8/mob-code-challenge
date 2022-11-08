@@ -42,4 +42,15 @@ import { UseCase } from "./UseCase";
     public get availableCapacity(): number {
         return this.maxWeight - this.usedCapacity;
     }
+
+    /**
+     * @property
+     * computes the total final net Price value of all
+     * items in the bag
+     * @returns {number} total Bag price value
+     */
+    public get netPrice(): number {
+        return this.items.reduce((acc, curr) => acc + curr.price, 0);
+    }
+
 }

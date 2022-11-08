@@ -23,6 +23,7 @@ describe('Bag class test suite', () => {
 
         expect(bag.availableCapacity).toEqual(50);
         expect(bag.usedCapacity).toEqual(50);
+        expect(bag.netPrice).toEqual(134);
     });
 
 

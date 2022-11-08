@@ -79,7 +79,7 @@
 				<ol>
 					<li>read input file scanning entrie file contents async</li>
 					<li>parse input from the file into <code>UseCase</code> collection</li>
-					<li>divide and conquer algorithm solver solves all use cases</li>
+					<li>greedy algorithm solver solves all use cases relies on sorting ratios</li>
 				</ol>
 				<a href="#problem-statement-summary" id="problem-statement-summary" style="color: inherit; text-decoration: none;">
 					<h2>Problem Statement Summary</h2>
@@ -89,8 +89,11 @@
 					<li>weights are fractional/prices are not</li>
 					<li>the goal is item indicies with max value (not max sum of item values)!</li>
 					<li>items with equal prices should favor lower weights (optimization)</li>
+					<li>there can be a max of 15 items placed in a bag</li>
+					<li>favour items with lower weights when prices are equal</li>
+					<li>favour items with higher prices maximizing the value of the bag</li>
 				</ul>
-				<p>the algorithm is a divide and conquer approach achieved by sorting items by highest price/weight ratio while also accounting for the price difference (prioritizing higher prices), then picking items one at a time until the bag is full ...</p>
+				<p>the algorithm is a greedy approach achieved by sorting items by highest price/weight ratio while also accounting for the price difference (prioritizing higher prices), then picking items one at a time until the bag is full ...</p>
 				<a href="#algorithm-complexity" id="algorithm-complexity" style="color: inherit; text-decoration: none;">
 					<h2>Algorithm Complexity</h2>
 				</a>

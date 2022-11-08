@@ -23,7 +23,7 @@ the solution solves the problem in 3 main stages fully encapsulated
 in the `Packer.pack` method
 1. read input file scanning entrie file contents async
 2. parse input from the file into `UseCase` collection
-3. divide and conquer algorithm solver solves all use cases
+3. greedy algorithm solver solves all use cases relies on sorting ratios
 
 ## Problem Statement Summary
 
@@ -31,8 +31,11 @@ in the `Packer.pack` method
 - weights are fractional/prices are not
 - the goal is item indicies with max value (not max sum of item values)!
 - items with equal prices should favor lower weights (optimization)
+- there can be a max of 15 items placed in a bag
+- favour items with lower weights when prices are equal
+- favour items with higher prices maximizing the value of the bag
 
-the algorithm is a divide and conquer approach achieved by sorting items by highest price/weight ratio while also accounting for the price difference (prioritizing higher prices), then picking items one at a time until the bag is full ...
+the algorithm is a greedy approach achieved by sorting items by highest price/weight ratio while also accounting for the price difference (prioritizing higher prices), then picking items one at a time until the bag is full ...
 
 ## Algorithm Complexity
 Time and space Complexity is **O(n log(n))**
