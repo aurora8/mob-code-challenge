@@ -1,5 +1,5 @@
-import { ApiError } from "../error";
-import { Item } from "../Item";
+import { ApiError } from "../errors/error";
+import { Item } from "../model/Item";
 
 describe('Item class validation tests for invalid weight and price', () => {
     test('Item weight validation', () => {

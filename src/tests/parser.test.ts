@@ -1,4 +1,6 @@
-import { Item, UseCase } from "../Item";
+import { join } from "path";
+import { Item } from "../model/Item";
+import { UseCase } from "../model/UseCase";
 import { Packer } from "../packer";
 
 const expected = [new UseCase(10, [
@@ -10,8 +12,7 @@ const expected = [new UseCase(10, [
 
 describe('Parser Test suite, tests input reading and parsing', () => {
     it('should parse example_input2 into UseCase array', async () => {
-        expect.assertions(1);
-        const content = await Packer.readInputFile('./resources/example_input2');
+        const content = await Packer.readInputFile(join(__dirname, '../../resources/example_input2'));
         const result = await Packer.parseInputs(content);
 
         expect(result).toMatchObject(expected);

@@ -1,7 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { ApiError } from './error';
-import { Bag, Item, UseCase } from './Item';
+import { ApiError } from './errors/error';
+import { Bag } from './model/Bag';
+import { Item } from './model/Item';
+import { UseCase } from './model/UseCase';
 
 export class Packer {
 
@@ -45,7 +47,7 @@ export class Packer {
      * contents as a string, for a better performance in larger file sizes,
      * this could be implemented as a Readable Stream instead (not nessecary in this case)
      * 
-     * the input path is normalzed by the path module, this is to resolve any
+     * the input path is normalized by the path module, this is to resolve any
      * path issues in the path string format, e.g //
      * 
      * @param inputFile {string} the path to the input file, the path is normalized in this method, relative
@@ -58,7 +60,7 @@ export class Packer {
         const normalized = path.normalize(inputFile);
 
         try {
-            return fs.promises.readFile(normalized, 'utf-8');
+            return await fs.promises.readFile(normalized, 'utf-8');
         } catch (err: any) {
             throw new ApiError(err.message);
         }
@@ -74,8 +76,11 @@ export class Packer {
      * max weigh capacity : (index,wight,price)
      * where each line represents an input tuple/item
      * 
+     * th parser will parse up to 15 lines were each lines
+     * is a use case
+     * 
      * the parser will attempt to parse incoming payloads by collecting relevant
-     * data into an array
+     * data into an array of UseCase objects
      * 
      * @param {string} content the file contents to parse
      * @returns {Array<Item>} an array of parsed Item objects
@@ -85,11 +90,15 @@ export class Packer {
             const useCases: Array<UseCase> = [];
             // extract lines
             const lines = content.split(/\r?\n/);
-            lines.forEach(line => {
+
+            // max 15 use cases
+            for (let i = 0; i < Math.min(lines.length, 15); i++) {
+                const line = lines[i];
+                // split and trim
                 const parts = line.split(":").map(p => p.trim());
                 // max weight for curr use case
                 const max_capacity = Number(parts[0].trim());
-
+                // extract items
                 const tuples = parts[1].split(' ');
                 // each tuple is an item
                 const items = tuples.map(tuple => {
@@ -100,7 +109,7 @@ export class Packer {
                 });
 
                 useCases.push(new UseCase(max_capacity, items));
-            });
+            }
 
             return useCases;
         } catch (err: any) {
@@ -188,21 +197,18 @@ export class Packer {
             bags.push(bag);
 
             // sort by price/weight ratio
-            // Insertion sort for length < 10, quick sort for larger arrays
+            // Insertion sort for length < 10, and quick sort for larger arrays
             const sorted = useCase.items
                 .sort((a, b) => {
                     // sort by ratio in desc order
-                    return (b.price / b.weight) - (a.price / a.weight) + (b.price - a.price);
+                    return b.ratio - a.ratio + (b.price - a.price);
                 });
 
             // start placing items in bag within allowed capacity
             // O(n)
+            console.table(sorted);
             for (let i = 0; i < sorted.length; i++) {
                 const item = sorted[i];
-                // weight exceeds max capacity
-                if (item.weight > useCase.maxWeight) {
-                    continue;
-                }
 
                 // can we add it?
                 if (item.weight <= bag.availableCapacity) {

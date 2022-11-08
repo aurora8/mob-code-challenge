@@ -1,8 +1,10 @@
-import { Bag, Item } from "../Item";
+import { Bag } from "../model/Bag";
+import { Item } from "../model/Item";
+
 
 describe('Bag class test suite', () => {
 
-    test('empty bag should return 0 used weight capacity', () => {
+    test('empty bag should return 0 used weight capacity and 100 available', () => {
         const bag = new Bag(100);
         expect(bag.usedCapacity).toBe(0);
         expect(bag.availableCapacity).toBe(100);
@@ -10,6 +12,7 @@ describe('Bag class test suite', () => {
 
     test('should match used capacity = 50, available capacity = 50', () => {
 
+        // total weight is 50
         const item1 = new Item(1, 2.4, 10);
         const item2 = new Item(2, 7.6, 12);
         const item3 = new Item(3, 20, 72);
