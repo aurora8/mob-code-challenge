@@ -5,7 +5,13 @@ import { Bag } from './model/Bag';
 import { Item } from './model/Item';
 import { UseCase } from './model/UseCase';
 
+/**
+ * @class
+ */
 export class Packer {
+
+    // prevent instantiating Packer instances
+    private constructor() {}
 
     /**
      * performs a knapsack solution using a divide and conquer algorithm from an input file
